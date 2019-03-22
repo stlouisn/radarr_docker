@@ -33,6 +33,8 @@ env:
 before_install:
   - docker version
   - sudo /sbin/sysctl -w net.ipv4.conf.all.forwarding=1
+  - echo ${DOCKER_VERSION}
+  - echo ${DOWNLOAD_URL}
 
 install:
   - mkdir -p ./userfs/opt/Radarr
