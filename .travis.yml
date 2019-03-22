@@ -28,7 +28,7 @@ env:
   matrix:    
     - DOCKER_TAG="latest"
       DOCKER_VERSION="$(curl -sSL https://api.github.com/repos/Radarr/Radarr/releases | jq -r '.[0] | .tag_name' | cut -c 2-)"
-      DOWNLOAD_URL="$(curl -s https://api.github.com/repos/Radarr/Radarr/releases/tags/v${DOCKER_VERSION} | jq -r '.assets[].browser_download_url' | grep linux)"
+      DOWNLOAD_URL="$(curl -sSL https://api.github.com/repos/Radarr/Radarr/releases/tags/v${DOCKER_VERSION} | jq -r '.assets[].browser_download_url' | grep linux)"
 
 before_install:
   - docker version
