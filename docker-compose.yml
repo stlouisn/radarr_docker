@@ -1,0 +1,18 @@
+version: '2.4'
+
+services:
+
+  radarr:
+    image: stlouisn/radarr
+    container_name: radarr
+    hostname: radarr
+    environment:
+      - LC_ALL=C.UTF-8
+      - TZ=UTC
+    restart: always
+    volumes:
+      - /docker/radarr/config:/config
+      - /media/downloads:/downloads
+      - /media/movies:/movies
+    ports:
+      - 7878
