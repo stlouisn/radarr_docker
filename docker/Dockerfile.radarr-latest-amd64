@@ -1,7 +1,6 @@
 FROM stlouisn/mono:latest-amd64
 
 COPY rootfs /
-
 RUN \
 
     export DEBIAN_FRONTEND=noninteractive && \
