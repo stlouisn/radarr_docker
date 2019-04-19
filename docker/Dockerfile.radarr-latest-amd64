@@ -7,21 +7,21 @@ RUN \
     export DEBIAN_FRONTEND=noninteractive && \
     export `cat /etc/lsb-release | grep -v DESCRIPTION` && \
 
-    # Create anon group
+    # Create radarr group
     groupadd \
         --system \
         --gid 10000 \
-        anon && \
+        radarr && \
 
-    # Create anon user
+    # Create radarr user
     useradd \
         --system \
         --no-create-home \
         --shell /sbin/nologin \
-        --comment anon \
+        --comment radarr \
         --gid 10000 \
         --uid 10000 \
-        anon
+        radarr
 
     # Update apt-cache
     apt-get update && \
@@ -66,7 +66,7 @@ RUN \
         /tmp/* \
         /var/lib/apt/lists/*
 
-COPY --chown=anon:anon userfs /
+COPY --chown=radarr:radarr userfs /
 
 VOLUME /config
 
