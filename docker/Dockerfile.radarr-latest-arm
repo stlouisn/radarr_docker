@@ -21,7 +21,7 @@ RUN \
         --comment radarr \
         --gid 10000 \
         --uid 10000 \
-        radarr
+        radarr && \
 
     # Update apt-cache
     apt-get update && \
