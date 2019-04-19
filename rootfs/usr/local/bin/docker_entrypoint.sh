@@ -3,7 +3,7 @@
 #=========================================================================================
 
 # Fix user and group ownerships for '/config'
-chown -R www-data:www-data /config
+chown -R radarr:radarr /config
 
 # Delete pid if it exists
 [[ -e /config/radarr.pid ]] && rm -f /config/radarr.pid
@@ -11,6 +11,6 @@ chown -R www-data:www-data /config
 #=========================================================================================
 
 # Start radarr in console mode
-exec gosu www-data \
+exec gosu radarr \
     /usr/bin/mono --debug \
-    /opt/Radarr/Radarr.exe -nobrowser -data=/config
+    /Radarr/Radarr.exe -nobrowser -data=/config
