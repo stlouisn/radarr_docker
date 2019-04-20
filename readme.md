@@ -20,8 +20,8 @@ Radarr is a music collection manager for Usenet and BitTorrent users. It can mon
 
 ### Tags
 
-[![Version](https://images.microbadger.com/badges/version/stlouisn/radarr.svg)][microbadger_url]
-[![Layers](https://images.microbadger.com/badges/image/stlouisn/radarr.svg)][microbadger_url]
+[![Version](https://images.microbadger.com/badges/version/stlouisn/radarr:latest.svg)][microbadger_url]
+[![Layers](https://images.microbadger.com/badges/image/stlouisn/radarr:latest.svg)][microbadger_url]
 
 ### Feature Requests
 
