@@ -5,7 +5,6 @@ COPY rootfs /
 RUN \
 
     export DEBIAN_FRONTEND=noninteractive && \
-    export `cat /etc/lsb-release | grep -v DESCRIPTION` && \
 
     # Create radarr group
     groupadd \
