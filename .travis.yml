@@ -28,7 +28,7 @@ env:
 
   matrix:    
     - DOCKER_TAG="latest"
-      DOCKER_VERSION="$(curl -ksSL https://api.github.com/repos/Radarr/Radarr/releases | jq -r .[0].tag_name | cut -c 2-)"
+      DOCKER_VERSION="$(curl -ksSL https://api.github.com/repos/Radarr/Radarr/releases | jq -r .['0'].tag_name | cut -c 2-)"
 
 before_install:
   - sudo /sbin/sysctl -w net.ipv4.conf.all.forwarding=1
