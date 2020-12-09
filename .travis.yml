@@ -44,6 +44,13 @@ before_script:
   - curl -sSL -o radarr.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux.tar.gz"
   - mkdir -p ./userfs
   - tar -xf radarr.tar.gz -C userfs/
+  - curl -sSL -o radarr-arm.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-arm.tar.gz"
+  - curl -sSL -o radarr-arm64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-arm64.tar.gz"
+  - curl -sSL -o radarr-amd64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-x64.tar.gz"
+  - l -ls
+  - tar -xf radarr-arm.tar.gz -C userfs-arm/
+  - tar -xf radarr-arm64.tar.gz -C userfs-arm64/
+  - tar -xf radarr-amd.tar.gz -C userfs-amd64/
 
 script:
   - sudo bash travis/build.sh
