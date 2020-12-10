@@ -15,4 +15,5 @@ chown -R radarr:radarr /config
 #    /usr/bin/mono --debug \
 #    /Radarr/Radarr.exe -nobrowser -data=/config
 exec gosu radarr \
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
     /Radarr/Radarr -nobrowser -data=/config
