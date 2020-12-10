@@ -1,4 +1,5 @@
-FROM stlouisn/mono:latest
+#FROM stlouisn/mono:latest
+FROM stlouisn/ubuntu:latest
 
 COPY rootfs /
 
