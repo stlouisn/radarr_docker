@@ -24,7 +24,7 @@ env:
     - SCHEMA_VERSION="1.0"
     - VCS_REF="$(git rev-parse --short HEAD)"
     - VCS_URL="$(git remote get-url origin | head -c-5)"
-    - DOCKER_TAG="latest"
+    - DOCKER_TAG="testing"
     - DOCKER_VERSION="$(sudo bash travis/get_version.sh)"
 
 before_install:
@@ -41,15 +41,17 @@ install:
 before_script:
   - sed -i -e '/^$/d' -e 's/^[ \t]*//' -e '/^#/d' dockerfiles/*
   - chmod 0544 rootfs/usr/local/bin/docker_entrypoint.sh
-  - curl -sSL -o radarr.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux.tar.gz"
-  - mkdir -p ./userfs
-  - tar -xf radarr.tar.gz -C userfs/
+  #- curl -sSL -o radarr.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux.tar.gz"
+  #- mkdir -p ./userfs
+  #- tar -xf radarr.tar.gz -C userfs/
   - curl -sSL -o radarr-arm.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-arm.tar.gz"
-  - curl -sSL -o radarr-arm64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-arm64.tar.gz"
-  - curl -sSL -o radarr-amd64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-x64.tar.gz"
-  - l -ls
+  - mkdir -p ./userfs-arm
   - tar -xf radarr-arm.tar.gz -C userfs-arm/
+  - curl -sSL -o radarr-arm64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-arm64.tar.gz"
+  - mkdir -p ./userfs-arm64
   - tar -xf radarr-arm64.tar.gz -C userfs-arm64/
+  - curl -sSL -o radarr-amd64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-x64.tar.gz"
+  - mkdir -p ./userfs-amd64
   - tar -xf radarr-amd.tar.gz -C userfs-amd64/
 
 script:
