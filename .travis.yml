@@ -52,7 +52,7 @@ before_script:
   - tar -xf radarr-arm64.tar.gz -C userfs-arm64/
   - curl -sSL -o radarr-amd64.tar.gz "https://github.com/Radarr/Radarr/releases/download/v${DOCKER_VERSION}/Radarr.master.${DOCKER_VERSION}.linux-core-x64.tar.gz"
   - mkdir -p ./userfs-amd64
-  - tar -xf radarr-amd.tar.gz -C userfs-amd64/
+  - tar -xf radarr-amd64.tar.gz -C userfs-amd64/
 
 script:
   - sudo bash travis/build.sh
