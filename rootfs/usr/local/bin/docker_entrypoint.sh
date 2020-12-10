@@ -11,6 +11,8 @@ chown -R radarr:radarr /config
 #=========================================================================================
 
 # Start radarr in console mode
+#exec gosu radarr \
+#    /usr/bin/mono --debug \
+#    /Radarr/Radarr.exe -nobrowser -data=/config
 exec gosu radarr \
-    /usr/bin/mono --debug \
-    /Radarr/Radarr.exe -nobrowser -data=/config
+    /Radarr/Radarr -nobrowser -data=/config
