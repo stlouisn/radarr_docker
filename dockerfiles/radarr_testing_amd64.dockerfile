@@ -1,5 +1,5 @@
 #FROM stlouisn/mono:latest
-FROM stlouisn/ubuntu:latest
+FROM stlouisn/ubuntu:rolling
 
 COPY rootfs /
 
