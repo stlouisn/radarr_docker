@@ -16,7 +16,7 @@
 [![Docker Pulls][docker_pulls_logo]][docker_hub_url]
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-Radarr is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new releases of your favorite movies and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.
+Radarr is a movie collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new movies and will interface with clients and indexers to grab, sort, and rename them. It can also be configured to automatically upgrade the quality of existing files in the library when a better quality format becomes available.
 
 ### Tags
 
