@@ -1,4 +1,3 @@
-#FROM stlouisn/mono:latest
 FROM stlouisn/ubuntu:rolling
 
 COPY rootfs /
@@ -49,7 +48,6 @@ RUN \
         /tmp/* \
         /var/lib/apt/lists/*
 
-#COPY --chown=radarr:radarr userfs /
 COPY --chown=radarr:radarr userfs-amd64 /
 
 VOLUME /config
