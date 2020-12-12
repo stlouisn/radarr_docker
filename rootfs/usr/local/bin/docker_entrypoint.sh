@@ -10,9 +10,6 @@ chown -R radarr:radarr /config
 
 #=========================================================================================
 
-# Workaround for missing ICU library
-export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
-
 # Start radarr in console mode
 exec gosu radarr \
     /Radarr/Radarr -nobrowser -data=/config
