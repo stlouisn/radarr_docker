@@ -26,3 +26,5 @@ Radarr is a movie collection manager for Usenet and BitTorrent users. It can mon
 #### Links
 
 *https://radarr.video/*
+
+*https://wiki.servarr.com/radarr*
