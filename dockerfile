@@ -17,15 +17,9 @@ RUN \
     # Determine Latest Stable Radar Version
     export APP_VERSION="$(curl -sSL --retry 5 --retry-delay 2 "https://radarr.servarr.com/v1/update/master/changes" | jq -r '.[0].version')" && \
 
-    echo $TARGETARCH && \
-
     # Download Radarr
-    if [ "arm64" = "$TARGETARCH" ] ; then echo test arm64 - yes ; fi && \
-    if [ "arm" = "$TARGETARCH" ] ; then echo test arm - yes ; fi && \
-    
-    if [ "arm64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm64.tar.gz" ; fi && \
     if [ "arm" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
-    ls -lA /tmp/ && \
+    if [ "arm64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm64.tar.gz" ; fi && \
 
     # Extract Radarr
     mkdir -p /userfs && \
@@ -69,14 +63,6 @@ RUN \
     # Install unicode support
     apt-get install -y --no-install-recommends \
         libicu70 && \
-
-#    # Install mediainfo
-#    apt-get install -y --no-install-recommends \
-#        mediainfo && \
-
-#    # Install chromaprint/fpcalc
-#    apt-get install -y --no-install-recommends \
-#        libchromaprint-tools && \
 
     # Clean apt-cache
     apt-get autoremove -y --purge && \
