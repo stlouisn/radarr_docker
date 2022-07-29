@@ -86,7 +86,7 @@ RUN \
         /tmp/* \
         /var/lib/apt/lists/*
 
-COPY --chown=radarr:radarr userfs /
+COPY --chown=radarr:radarr --from=dl /userfs /
 
 VOLUME /config
 
