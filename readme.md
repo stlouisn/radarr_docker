@@ -21,17 +21,7 @@
 [![Docker Pulls][docker_pulls_logo]][docker_pulls_url]
 [![License][license_logo]][license_url]
 
-Radarr Docker is a movie downloader and organizer that is configured for use within Docker containers and offers:
-
-- interoperabity with other servarr containers
-- RSS feeds
-- monitors for new releases and can be configured with certain criteria
-- organizing movie library
-  
-```docker
-docker pull stlouisn/radarr:latest
-docker run stlouisn/radarr:latest /bin/bash -l
-```
+Radarr is a movie collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new movies and will interface with clients and indexers to grab, sort, and rename them. It can also be configured to automatically upgrade the quality of existing files in the library when a better quality format becomes available.
 
 #### Links
 
