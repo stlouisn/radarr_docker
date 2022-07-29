@@ -4,6 +4,9 @@ ARG TARGETARCH
 
 RUN \
 
+    # Non-interactive frontend
+    export DEBIAN_FRONTEND=noninteractive && \
+
     # Update apt-cache
     apt-get update && \
 
@@ -17,9 +20,12 @@ RUN \
     echo $TARGETARCH && \
 
     # Download Radarr
+    if [ "arm64" = "$TARGETARCH" ] ; then echo test arm64 - yes ; fi && \
+    if [ "arm" = "$TARGETARCH" ] ; then echo test arm - yes ; fi && \
+    
     if [ "arm64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm64.tar.gz" ; fi && \
-    if [ "arm/v7" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
-    ls -lA /tmp/radarr.tar.gz && \
+    if [ "arm" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
+    ls -lA /tmp/ && \
 
     # Extract Radarr
     mkdir -p /userfs && \
