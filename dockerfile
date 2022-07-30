@@ -14,7 +14,7 @@ RUN \
     apt-get install -y --no-install-recommends \
         jq && \
 
-    # Determine Latest Stable Radar Version
+    # Get Latest Version
     export APP_VERSION="$(curl -sSL --retry 5 --retry-delay 2 "https://radarr.servarr.com/v1/update/master/changes" | jq -r '.[0].version')" && \
 
     # Download Radarr
