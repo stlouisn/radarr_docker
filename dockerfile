@@ -2,20 +2,18 @@ FROM stlouisn/ubuntu:latest AS dl
 
 ARG TARGETARCH
 
-RUN \
+ARG APP_VERSION
 
-    # Non-interactive frontend
-    export DEBIAN_FRONTEND=noninteractive && \
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN \
 
     # Update apt-cache
     apt-get update && \
 
     # Install jq
     apt-get install -y --no-install-recommends \
-        jq && \
-
-    # Get Latest Version
-    export APP_VERSION="$(curl -sSL --retry 5 --retry-delay 2 "https://radarr.servarr.com/v1/update/master/changes" | jq -r '.[0].version')" && \
+        curl && \
 
     # Download Radarr
     if [ "arm" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
@@ -30,12 +28,11 @@ RUN \
 
 FROM stlouisn/ubuntu:latest
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 COPY rootfs /
 
 RUN \
-
-    # Non-interactive frontend
-    export DEBIAN_FRONTEND=noninteractive && \
 
     # Create radarr group
     groupadd \
