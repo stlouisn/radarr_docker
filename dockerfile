@@ -62,6 +62,10 @@ RUN \
     apt-get install -y --no-install-recommends \
         libicu70 && \
 
+    # Install xml command line toolkit
+    apt-get install -y --no-install-recommends \
+        xmlstarlet && \
+
     # Clean apt-cache
     apt-get autoremove -y --purge && \
     apt-get autoclean -y && \
