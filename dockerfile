@@ -11,14 +11,23 @@ RUN \
     # Update apt-cache
     apt-get update && \
 
-    # Install jq
+    # Install curl
     apt-get install -y --no-install-recommends \
         curl && \
 
     # Download Radarr
-    if [ "arm" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
-    if [ "arm64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm64.tar.gz" ; fi && \
-    if [ "amd64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-x64.tar.gz" ; fi && \
+
+        # ubuntu noble base image causes issues downloading files from github using curl --> temporary working around
+        #if [ "arm" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
+        if [ "arm" = "$TARGETARCH" ] ; then apt-get install -y --no-install-recommends wget2 ; fi && \
+        if [ "arm" = "$TARGETARCH" ] ; then wget2 -O /tmp/radarr.tar.gz -q "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm.tar.gz" ; fi && \
+
+        # ubuntu noble base image causes issues downloading files from github using curl --> temporary working around
+        #if [ "arm64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm64.tar.gz" ; fi && \
+        if [ "arm64" = "$TARGETARCH" ] ; then apt-get install -y --no-install-recommends wget2 ; fi && \
+        if [ "arm64" = "$TARGETARCH" ] ; then wget2 -O /tmp/radarr.tar.gz -q "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-arm64.tar.gz" ; fi && \
+
+        if [ "amd64" = "$TARGETARCH" ] ; then curl -o /tmp/radarr.tar.gz -sSL "https://github.com/Radarr/Radarr/releases/download/v$APP_VERSION/Radarr.master.$APP_VERSION.linux-core-x64.tar.gz" ; fi && \
 
     # Extract Radarr
     mkdir -p /userfs && \
